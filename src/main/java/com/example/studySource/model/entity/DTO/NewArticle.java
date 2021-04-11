@@ -1,4 +1,4 @@
-package com.example.studySource.model.entity;
+package com.example.studySource.model.entity.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,24 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Article {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String writer;
-
-    private String password;
+public class NewArticle {
 
     private String title;
 
     private String content;
 
-    private LocalDateTime createAt;
+    private String writer;
+
+    private String password;
 }

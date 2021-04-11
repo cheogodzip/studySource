@@ -7,9 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class BoardController {
 
+    @GetMapping("/")
+    public String home(){
+        return "home";
+    }
+
     @GetMapping("/board")
-    public String index(Model model){
-        model.addAttribute("msg", "안녕하세요, 반갑습니다");
+    public String index(){
         return "board/index";
     }
+
+    @GetMapping("/board/new")
+    public String newArticle(){
+        return "board/new";
+    }
+
 }
