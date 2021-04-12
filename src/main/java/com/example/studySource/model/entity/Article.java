@@ -30,5 +30,5 @@ public class Article {
 
     private String content;
 
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 }

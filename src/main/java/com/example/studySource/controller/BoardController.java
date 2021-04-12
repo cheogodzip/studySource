@@ -1,5 +1,6 @@
 package com.example.studySource.controller;
 
+import com.example.studySource.model.entity.Article;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ public class BoardController {
 
     @GetMapping("/board")
     public String index(){
+
         return "board/index";
     }
 
