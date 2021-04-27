@@ -7,6 +7,7 @@
 
 * 설명.
     * ArticleController : 게시글 작성할 때 사용하는 컨트롤러
+    * ArticleService : 컨트롤러의 서비스 로직 
     * ArticleResponse : 게시글을 조회할 때 반환하는 객체
     * ArticleIndexResponse : 페이지에 노출시킬 게시글 정보 객체
     * 

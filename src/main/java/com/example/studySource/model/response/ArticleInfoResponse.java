@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ArticleIndexResponse {
+public class ArticleInfoResponse {
 
     private Long id;
 
