@@ -5,6 +5,7 @@ import com.example.studySource.model.network.Pagination;
 import com.example.studySource.model.request.NewArticle;
 import com.example.studySource.model.response.ArticleInfoResponse;
 import com.example.studySource.model.response.ArticlePageResponse;
+import com.example.studySource.model.response.ArticleResponse;
 import com.example.studySource.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -35,6 +37,19 @@ public class ArticleService {
                 .build();
 
         log.info("article : {}", articleRepository.save(article));
+    }
+
+    public ArticleResponse read(Long id){
+        return articleRepository.findById(id)
+                .map(article -> {
+                    return ArticleResponse.builder()
+                            .id(article.getId())
+                            .writer(article.getWriter())
+                            .title(article.getTitle())
+                            .content(article.getContent())
+                            .createdAt(article.getCreatedAt())
+                            .build();})
+                .orElseGet(ArticleResponse::new);
     }
 
     public ArticlePageResponse search(Pageable pageable){

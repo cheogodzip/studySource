@@ -13,6 +13,9 @@ import java.time.LocalDateTime;
 @Builder
 public class ArticleResponse {
 
+    // 글 원래 id
+    private Long id;
+
     private String title;
 
     private String content;

@@ -1,0 +1,36 @@
+{{>layouts/header}}
+
+<!-- jumbotron -->
+<div class="jumbotron">
+    <h1>Article 상세보기</h1>
+    <hr>
+    <p>공부 소스를 공유하는 사이트입니다!</p><!-- 모델 객체 가져오기 -->
+</div>
+<table class="table">
+    <tbody>
+        {{#article}}
+            <tr>
+                <th>글번호</th>
+                <td>{{id}}</td>
+            </tr>
+            <tr>
+                <th>제목</th>
+                <td>{{title}}</td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td>{{writer}}</td>
+            </tr>
+            <tr>
+                <th>작성시간</th>
+                <td>{{createdAt}}</td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td>{{content}}</td>
+            </tr>
+        {{/article}}
+    </tbody>
+</table>
+<a href="/board" class="btn btn-success btn-block">목록으로</a>
+{{>layouts/footer}}

@@ -6,27 +6,26 @@
     <p>공부 소스를 공유하는 사이트입니다!</p><!-- 모델 객체 가져오기 -->
 </div>
 
-<!--Article 목록이 들어올 자리-->
-
+<!--article list-->
 <table class="table">
     <thead class="thead-light">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">제목</th>
-        <th scope="col">작성자</th>
-        <th scope="col">작성시간</th>
-    </tr>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">작성시간</th>
+        </tr>
     </thead>
-        <tbody>
-        {{#articleInfoResponseList}}
-            <tr>
-                <th scope="row">{{id}}</th>
-                <td><a href="/{{id}}">{{title}}</a></td>
-                <td>{{writer}}</td>
-                <td>{{createdAt}}</td>
-            </tr>
-        {{/articleInfoResponseList}}
-        </tbody>
+    <tbody>
+    {{#articleInfoResponseList}}
+        <tr>
+            <th scope="row">{{id}}</th>
+            <td><a href="articles/{{id}}">{{title}}</a></td>
+            <td>{{writer}}</td>
+            <td>{{createdAt}}</td>
+        </tr>
+    {{/articleInfoResponseList}}
+    </tbody>
 </table>
 
 <!-- 페이지 번호 -->
