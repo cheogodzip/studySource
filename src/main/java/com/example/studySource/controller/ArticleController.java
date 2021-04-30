@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.studySource.model.request.*;
+import com.example.studySource.model.network.request.*;
 
 @Slf4j
 @Controller
@@ -22,6 +22,6 @@ public class ArticleController {
     @PostMapping("/board/new/post")
     public String create(NewArticle newArticle){
         articleService.create(newArticle);
-        return "redirect:/board";
+        return "redirect:/board?page=1";
     }
 }

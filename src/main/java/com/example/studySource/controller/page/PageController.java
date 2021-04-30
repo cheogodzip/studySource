@@ -1,7 +1,8 @@
 package com.example.studySource.controller.page;
 
-import com.example.studySource.model.response.ArticlePageResponse;
-import com.example.studySource.model.response.ArticleResponse;
+import com.example.studySource.model.network.Pagination;
+import com.example.studySource.model.network.response.ArticlePageResponse;
+import com.example.studySource.model.network.response.ArticleResponse;
 import com.example.studySource.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +29,7 @@ public class PageController {
         return "board/new";
     }
 
+    // 아티클 리스트
     @GetMapping("/board")
     public String search(@PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable, Model model){
         ArticlePageResponse articlePageResponse = articleService.search(pageable);
@@ -37,7 +39,8 @@ public class PageController {
         return "board/list";
     }
 
-    @GetMapping("/articles/{id}")
+    // 상세 보기
+    @GetMapping("/board/articles/{id}")
     public String read(@PathVariable Long id, Model model){
         ArticleResponse articleResponse = articleService.read(id);
 

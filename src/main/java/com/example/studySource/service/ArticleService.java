@@ -2,21 +2,19 @@ package com.example.studySource.service;
 
 import com.example.studySource.model.entity.Article;
 import com.example.studySource.model.network.Pagination;
-import com.example.studySource.model.request.NewArticle;
-import com.example.studySource.model.response.ArticleInfoResponse;
-import com.example.studySource.model.response.ArticlePageResponse;
-import com.example.studySource.model.response.ArticleResponse;
+import com.example.studySource.model.network.request.NewArticle;
+import com.example.studySource.model.network.response.ArticleInfoResponse;
+import com.example.studySource.model.network.response.ArticlePageResponse;
+import com.example.studySource.model.network.response.ArticleResponse;
 import com.example.studySource.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j

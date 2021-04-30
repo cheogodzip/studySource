@@ -1,4 +1,4 @@
-package com.example.studySource.model.response;
+package com.example.studySource.model.network.response;
 
 import com.example.studySource.model.network.Pagination;
 import lombok.AllArgsConstructor;

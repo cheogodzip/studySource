@@ -1,4 +1,4 @@
-package com.example.studySource.model.request;
+package com.example.studySource.model.network.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
