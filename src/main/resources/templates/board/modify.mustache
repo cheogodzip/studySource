@@ -1,0 +1,25 @@
+{{>layouts/header}}
+<div class="jumbotron">
+    <h1>게시글 수정</h1>
+    <hr>
+    <p>다같이 열심히 공부하자!</p>
+</div>
+{{#article}}
+<form class="container" method = "put" action="/board/modify/put/{{id}}">
+
+    <div class="form-group">
+        <label for="title">제목</label>
+        <input name="title" type="text" class="form-control" id="article-title" value="{{title}}">
+    </div>
+    <div class="form-group">
+        <label for="content">내용</label>
+        <textarea name="content" class="form-control" id="article-content" rows="6">{{content}}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="password">비밀번호</label>
+        <input name="password" type="text" class="form-control" id="article-password" placeholder="비밀번호를 입력하세요">
+    </div>
+    <button type="submit" class="btn btn-primary">제출</button>
+</form>
+{{/article}}
+{{>layouts/footer}}

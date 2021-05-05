@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +18,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Where(clause = "deleted = false")
 public class Article {
 
     @Id
@@ -31,4 +34,7 @@ public class Article {
     private String content;
 
     private LocalDateTime createdAt;
+
+    @ColumnDefault("0")
+    private boolean deleted;
 }

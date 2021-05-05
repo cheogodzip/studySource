@@ -3,6 +3,7 @@ package com.example.studySource.controller.page;
 import com.example.studySource.model.network.response.ArticlePageResponse;
 import com.example.studySource.model.network.response.ArticleResponse;
 import com.example.studySource.service.ArticleService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 
+@Slf4j
 @Controller
 public class PageController {
 
@@ -28,6 +30,14 @@ public class PageController {
     @GetMapping("/board/new")
     public String newArticle(){
         return "board/new";
+    }
+
+    @GetMapping("/board/modify/{id}")
+    public String modifyArticle(@PathVariable Long id, Model model){
+        ArticleResponse articleResponse = articleService.read(id);
+        model.addAttribute("article", articleResponse);
+        System.out.println(articleResponse.getContent());
+        return "board/modify";
     }
 
     // 아티클 리스트
@@ -52,6 +62,11 @@ public class PageController {
         model.addAttribute("article", articleResponse);
 
         return "board/article";
+    }
 
+    @GetMapping("/board/delete/{id}")
+    public String delete(@PathVariable Long id, Model model){
+        model.addAttribute("id", id);
+        return "board/delete";
     }
 }
