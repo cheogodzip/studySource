@@ -26,7 +26,6 @@ public class PageController {
     public String home(){
         return "home";
     }
-
     @GetMapping("/board/new")
     public String newArticle(){
         return "board/new";
@@ -36,7 +35,6 @@ public class PageController {
     public String modifyArticle(@PathVariable Long id, Model model){
         ArticleResponse articleResponse = articleService.read(id);
         model.addAttribute("article", articleResponse);
-        System.out.println(articleResponse.getContent());
         return "board/modify";
     }
 

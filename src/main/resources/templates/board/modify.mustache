@@ -5,8 +5,8 @@
     <p>다같이 열심히 공부하자!</p>
 </div>
 {{#article}}
-<form class="container" method = "put" action="/board/modify/put/{{id}}">
-
+<form class="container" method = "post" action="/board/modify/{{id}}">
+    <input type="hidden" name="_method" value="put"/>
     <div class="form-group">
         <label for="title">제목</label>
         <input name="title" type="text" class="form-control" id="article-title" value="{{title}}">

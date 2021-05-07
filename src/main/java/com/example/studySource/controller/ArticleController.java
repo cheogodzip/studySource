@@ -29,13 +29,17 @@ public class ArticleController {
         return "redirect:/board?page=1";
     }
 
-    @PutMapping("/board/modify/put/{id}")
+    @PutMapping("/board/modify/{id}")
     public String modify(@PathVariable Long id, ModifyArticleRequest modifyArticleRequest){
-        articleService.modify(id, modifyArticleRequest);
-        return "redirect:/board/articles/" + modifyArticleRequest;
+
+        if(articleService.modify(id, modifyArticleRequest)){
+            return "redirect:/board/articles/" + id;
+        } else{
+            return "board/passwordError";
+        }
     }
 
-    @PostMapping("/board/delete/{id}")
+    @DeleteMapping("/board/delete/{id}")
     public String delete(@PathVariable Long id, String password, Model model){
 
         model.addAttribute("id", id);
@@ -43,7 +47,7 @@ public class ArticleController {
         if(articleService.delete(id, password)){
             return "redirect:/board?page=1";
         } else {
-            return "redirect:/board/passwordError";
+            return "board/passwordError";
         }
     }
 }

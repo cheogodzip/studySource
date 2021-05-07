@@ -56,26 +56,30 @@ public class ArticleService {
                 .orElseGet(ArticleResponse::new);
     }
 
-    public void modify(Long id, ModifyArticleRequest modifyArticleRequest) {
+    public boolean modify(Long id, ModifyArticleRequest modifyArticleRequest) {
 
-        Article article = articleRepository.findById(id).get();
+        Article target = articleRepository.findById(id).get();
+
+        // 추후 제목, 본문, 비밀번호에 대해 에러 찾는 코드 추가해야 됨.
 
         // 비밀번호 검사
-        article.getPassword().equals(modifyArticleRequest.getPassword());
-        // 제목, 내용 빈칸 에러 처리하기
+        if (target.getPassword().equals(modifyArticleRequest.getPassword())){
+            target.setTitle(modifyArticleRequest.getTitle());
+            target.setContent(modifyArticleRequest.getContent());
+            target.setUpdatedAt(LocalDateTime.now());
 
-        Article modifiedArticle = Article.builder()
-                .title(modifyArticleRequest.getTitle())
-                .content(modifyArticleRequest.getContent())
-                .createdAt(LocalDateTime.now())
-                .build();
+            log.info("article : {}", articleRepository.save(target));
 
-        log.info("article : {}", articleRepository.save(modifiedArticle));
+            return true;
+        } else{
+            return false;
+        }
     }
 
     public boolean delete(Long id, String password){
         Article target = articleRepository.findById(id).get();
 
+        // 비밀번호 검사
         if (target.getPassword().equals(password)){
             target.setDeleted(true);
             articleRepository.save(target);
