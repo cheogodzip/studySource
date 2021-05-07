@@ -35,6 +35,8 @@ public class Article {
 
     private LocalDateTime createdAt;
 
+    private LocalDateTime updatedAt;
+
     @ColumnDefault("0")
     private boolean deleted;
 }
