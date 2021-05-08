@@ -34,7 +34,7 @@ public class ArticleService {
 
         Article article = Article.builder()
                 .title(newArticle.getTitle())
-                .content(newArticle.getContent())
+                .content(newArticle.getContent().replace("\r\n", "<br>")) // 줄바꿈 처리
                 .writer(newArticle.getWriter())
                 .password(newArticle.getPassword())
                 .createdAt(LocalDateTime.now())
@@ -65,7 +65,7 @@ public class ArticleService {
         // 비밀번호 검사
         if (target.getPassword().equals(modifyArticleRequest.getPassword())){
             target.setTitle(modifyArticleRequest.getTitle());
-            target.setContent(modifyArticleRequest.getContent());
+            target.setContent(modifyArticleRequest.getContent().replace("\r\n", "<br>"));
             target.setUpdatedAt(LocalDateTime.now());
 
             log.info("article : {}", articleRepository.save(target));
