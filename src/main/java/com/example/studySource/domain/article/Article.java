@@ -1,5 +1,6 @@
-package com.example.studySource.model.entity;
+package com.example.studySource.domain.article;
 
+import com.example.studySource.domain.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Where(clause = "deleted = false")
-public class Article {
+public class Article extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +32,6 @@ public class Article {
     private String title;
 
     private String content;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
 
     @ColumnDefault("0")
     private boolean deleted;

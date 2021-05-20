@@ -1,6 +1,6 @@
 package com.example.studySource.controller;
 
-import com.example.studySource.repository.ArticleRepository;
+import com.example.studySource.domain.article.ArticleRepository;
 import com.example.studySource.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

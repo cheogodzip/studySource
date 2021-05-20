@@ -1,13 +1,13 @@
 package com.example.studySource.service;
 
-import com.example.studySource.model.entity.Article;
+import com.example.studySource.domain.article.Article;
 import com.example.studySource.model.network.Pagination;
 import com.example.studySource.model.network.request.ModifyArticleRequest;
 import com.example.studySource.model.network.request.NewArticleRequest;
 import com.example.studySource.model.network.response.ArticleInfoResponse;
 import com.example.studySource.model.network.response.ArticlePageResponse;
 import com.example.studySource.model.network.response.ArticleResponse;
-import com.example.studySource.repository.ArticleRepository;
+import com.example.studySource.domain.article.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -37,7 +36,6 @@ public class ArticleService {
                 .content(newArticle.getContent().replace("\r\n", "<br>")) // 줄바꿈 처리
                 .writer(newArticle.getWriter())
                 .password(newArticle.getPassword())
-                .createdAt(LocalDateTime.now())
                 .build();
 
         log.info("article : {}", articleRepository.save(article));
@@ -66,7 +64,6 @@ public class ArticleService {
         if (target.getPassword().equals(modifyArticleRequest.getPassword())){
             target.setTitle(modifyArticleRequest.getTitle());
             target.setContent(modifyArticleRequest.getContent().replace("\r\n", "<br>"));
-            target.setUpdatedAt(LocalDateTime.now());
 
             log.info("article : {}", articleRepository.save(target));
 

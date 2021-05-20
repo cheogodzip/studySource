@@ -1,6 +1,5 @@
-package com.example.studySource.repository;
+package com.example.studySource.domain.article;
 
-import com.example.studySource.model.entity.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
