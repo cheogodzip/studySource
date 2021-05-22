@@ -55,8 +55,9 @@ public class ArticleService {
     }
 
     public boolean modify(Long id, ModifyArticleRequest modifyArticleRequest) {
-
-        Article target = articleRepository.findById(id).get();
+        // 여기서 테스트 코드 실패
+        Article target = articleRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + id));
 
         // 추후 제목, 본문, 비밀번호에 대해 에러 찾는 코드 추가해야 됨.
 

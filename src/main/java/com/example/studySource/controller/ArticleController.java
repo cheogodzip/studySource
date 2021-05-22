@@ -1,6 +1,5 @@
 package com.example.studySource.controller;
 
-import com.example.studySource.domain.article.ArticleRepository;
 import com.example.studySource.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +17,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class ArticleController {
 
     @Autowired
-    private ArticleRepository articleRepository;
-
-    @Autowired
     private ArticleService articleService;
 
     @PostMapping("/board/new/post")
@@ -31,7 +27,6 @@ public class ArticleController {
 
     @PutMapping("/board/modify/{id}")
     public String modify(@PathVariable Long id, ModifyArticleRequest modifyArticleRequest){
-
         if(articleService.modify(id, modifyArticleRequest)){
             return "redirect:/board/articles/" + id;
         } else{
